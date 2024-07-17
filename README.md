@@ -48,12 +48,20 @@ or you can use the following command to run the app in a Docker container:
     -f Dockerfile .
   ```
 
+docker build \
+    --platform=linux/amd64 \
+    --progress=plain \
+    -t otomati-app:latest \
+    -f Dockerfile .
+
+
 - Run the Docker container:
   ```shell
   docker run -it -d \
     --name otomati-app \
     --platform=linux/amd64 \
     -p 8501:8501 \
+    -p 8080:8080 \
     -v "$(pwd)/otomati_app/credentials.json:/app/otomati_app/credentials.json" \
     otomati-app:latest \
     /bin/sh
@@ -71,4 +79,4 @@ The code is used under the Apache 2.0 license. For more information, please refe
 
 ## License
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE.md) file for details.
